@@ -199,7 +199,7 @@ async function customRender({ source, file, md }) {
     const usageObj = compileUsage({
       componentName,
       usage: pageData.usage,
-      demoPath: path.posix.resolve(__dirname, `../../../packages/intel/vue3/src/${componentName}/_usage/index.vue`).replace(/\\/g, '/'),
+      demoPath: path.posix.resolve(__dirname, `tdesign-vue-next/src/${componentName}/_usage/index.vue`).replace(/\\/g, '/'),
     });
     if (usageObj) {
       mdSegment.usage = usageObj;
