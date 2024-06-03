@@ -77,6 +77,13 @@
     "overrides": {
       "vue2.7": "npm:vue@~2.7.16",
       "vue3": "npm:vue@3.3.9"
+    },
+    "packageExtensions": {
+      "@vue/test-utils": {
+        "peerDependencies": {
+          "vue": "3.3.9"
+        }
+      }
     }
   },
   "lint-staged": {

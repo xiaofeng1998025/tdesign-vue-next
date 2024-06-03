@@ -1,21 +1,22 @@
 import * as path from 'node:path';
 import * as process from 'node:process';
 import { searchForWorkspaceRoot } from 'vite';
-import { basePlugin } from '../../../../../script/vite.base.config';
+import { basePlugin } from '../../../script/vite.base.config';
 // import { resolveAlias } from '../../../../../sites/vue3/vite.config';
 
 const workspaceRoot = searchForWorkspaceRoot(process.cwd());
 const getRootPath = (...args: string[]) => path.posix.resolve(workspaceRoot, ...args);
 
 export function resolveAlias(vueVersion: number) {
-  return {
-    '@adapter/vue': getRootPath(`packages/adapter/vue/vue${vueVersion}`),
-    '@adapter/hooks': getRootPath(`packages/adapter/hooks/vue${vueVersion}`),
-    '@adapter/utils': getRootPath(`packages/adapter/utils/vue${vueVersion}`),
-    '@td/components': getRootPath(`packages/intel/vue${vueVersion}/src`),
-    '@td/components': getRootPath(`packages/components/vue${vueVersion}`),
-    'tdesign-vue-next/es/locale': getRootPath(`packages/components/locale/src`),
-  };
+  return [
+    { find: '@', replacement: path.resolve(__dirname) },
+    { find: '@adapter/vue', replacement: getRootPath(`packages/adapter/vue/vue${vueVersion}`) },
+    { find: '@adapter/hooks', replacement: getRootPath(`packages/adapter/hooks/vue${vueVersion}`) },
+    { find: '@adapter/utils', replacement: getRootPath(`packages/adapter/utils/vue${vueVersion}`) },
+    { find: /^@td\/components\/(.+)/, replacement: getRootPath(`packages/tdesign-vue${vueVersion === 3 ? '-next' : ''}/src/$1`) },
+    { find: /^@td\/components$/, replacement: getRootPath(`packages/tdesign-vue${vueVersion === 3 ? '-next' : ''}`) },
+    { find: 'tdesign-vue-next/es/locale', replacement: getRootPath(`packages/components/locale/src`) },
+  ];
 }
 
 // 单元测试相关配置
@@ -23,7 +24,7 @@ const testConfig = {
   include:
   // process.env.NODE_ENV === 'test-snap'
   //   ? ['test/unit/snap/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}']
-       [`${getRootPath('packages/intel/vue3/src')}/**/__tests__/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}`],
+       [`${getRootPath('packages/tdesign-vue-next/src')}/**/__tests__/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}`],
   globals: true,
   environment: 'jsdom',
   testTimeout: 1000,

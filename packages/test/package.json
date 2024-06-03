@@ -2,5 +2,15 @@
   "name": "@td/test",
   "version": "0.0.1",
   "title": "",
-  "description": ""
+  "description": "",
+  "scripts": {
+    "test:unit": "vitest run --config ./unit/vitest.config.ts"
+  },
+  "devDependencies": {
+    "@types/cli-color": "^2.0.6",
+    "@types/lodash-es": "^4.17.12",
+    "cli-color": "^2.0.4",
+    "vite": "^5.0.12",
+    "vitest": "^1.6.0"
+  }
 }
