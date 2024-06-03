@@ -1,6 +1,6 @@
-import * as Vue from 'vue';
-import { h as H, getCurrentInstance } from 'vue';
-import type { App, Plugin, VNode } from 'vue';
+import * as Vue from 'vue3';
+import { h as H, getCurrentInstance } from 'vue3';
+import type { App, Plugin, VNode } from 'vue3';
 
 function getVNode(node: VNode) {
   return node;
@@ -30,7 +30,7 @@ const createElement = H;
 const isVue3 = true;
 const isVue2 = false;
 
-export * from 'vue';
+export * from 'vue3';
 export {
   getCurrentInstance,
   getVNode,

@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import type { PluginObject, VueConstructor } from 'vue';
+import Vue from 'vue2.7';
+import type { PluginObject, VueConstructor } from 'vue2.7';
 import { capitalize } from 'lodash-es';
 
 export function withInstall<T>(comp: T, dep?: PluginObject<any>, directive?: { name: string; comp: unknown }) {

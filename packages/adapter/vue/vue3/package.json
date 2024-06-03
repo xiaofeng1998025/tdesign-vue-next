@@ -15,6 +15,6 @@
   "devDependencies": {
     "@td/ts-config": "workspace:^",
     "@types/lodash-es": "^4.17.12",
-    "vue": "3.3.9"
+    "vue3": "npm:vue@3.3.9"
   }
 }

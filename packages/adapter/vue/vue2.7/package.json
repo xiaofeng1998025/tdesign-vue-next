@@ -13,6 +13,6 @@
   "devDependencies": {
     "@td/ts-config": "workspace:^",
     "@types/lodash-es": "^4.17.12",
-    "vue": "~2.7.16"
+    "vue2.7": "npm:vue@~2.7.16"
   }
 }

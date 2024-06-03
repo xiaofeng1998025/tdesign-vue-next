@@ -1,5 +1,5 @@
-import Vue, { h as H, getCurrentInstance as getCurrentInstanceInner } from 'vue';
-import type { Ref, VNode, VueConstructor } from 'vue';
+import Vue, { h as H, getCurrentInstance as getCurrentInstanceInner } from 'vue2.7';
+import type { Ref, VNode, VueConstructor } from 'vue2.7';
 import { clone, lowerFirst, merge, omit } from 'lodash-es';
 import Teleport from './components/Teleport';
 
@@ -105,7 +105,7 @@ function createElement(type: string, props: Record<string, any> = {}, children?:
 const isVue3 = false;
 const isVue2 = true;
 
-export * from 'vue';
+export * from 'vue2.7';
 export {
   getVNode,
   getCurrentInstance,
