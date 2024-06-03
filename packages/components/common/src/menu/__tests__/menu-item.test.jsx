@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { MenuItem, Menu } from 'tdesign-vue-next'
+import { MenuItem, Menu } from '../index';
 
 let $routerMock = { push: vi.fn() };
 

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 import { ref } from 'vue';
-import Checkbox, { CheckboxGroup } from 'tdesign-vue-next';
+import Checkbox, { CheckboxGroup } from '../index';
 
 describe('checkbox', () => {
   describe(':props', () => {

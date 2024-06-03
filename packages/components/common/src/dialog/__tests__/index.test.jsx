@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 import { nextTick, ref } from '@td/adapter-vue';
 import { CloseIcon } from 'tdesign-icons-vue-next';
-import { Dialog } from 'tdesign-vue-next';
+import { Dialog } from '../index';
 
 describe('dialog', () => {
   describe(':props', () => {

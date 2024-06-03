@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { Menu } from 'tdesign-vue-next';
+import { Menu } from '../index';
 
 // every component needs four parts: props/events/slots/functions.
 describe('menu', () => {

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { expect, vi } from 'vitest';
 import { CloseIcon } from 'tdesign-icons-vue-next';
-import { CheckTag, Tag } from 'tdesign-vue-next';
+import { CheckTag, Tag } from '../index';
 
 describe('tag or CheckTag', () => {
   describe(':Tag:props', () => {

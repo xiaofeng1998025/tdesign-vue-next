@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { Popconfirm } from 'tdesign-vue-next';
+import { Popconfirm } from '../index';
 
 // every component needs four parts: props/events/slots/functions.
 describe('popconfirm', () => {

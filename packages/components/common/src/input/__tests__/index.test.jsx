@@ -2,7 +2,7 @@ import { nextTick, ref } from '@td/adapter-vue';
 import { mount } from '@vue/test-utils';
 import { expect, it, vi } from 'vitest';
 import { AppIcon, CloseCircleFilledIcon, ScanIcon } from 'tdesign-icons-vue-next';
-import { Input } from 'tdesign-vue-next';
+import { Input } from '../index';
 
 const alignList = ['left', 'center', 'right'];
 const sizeList = ['small', 'large'];

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { Cascader } from 'tdesign-vue-next';
+import { Cascader } from '../index';
 
 const options = [
   {

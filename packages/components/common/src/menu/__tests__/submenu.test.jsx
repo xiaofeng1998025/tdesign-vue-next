@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { ref } from '@td/adapter-vue';
-import { Submenu } from 'tdesign-vue-next';
+import { Submenu } from '../index';
 
 const Menu = {
   theme: ref('light'),

@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import { Progress } from 'tdesign-vue-next';
+import { Progress } from '../index';
 
 describe('progress', () => {
   describe(':props', () => {

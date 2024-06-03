@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 import { CloseIcon, InfoCircleFilledIcon } from 'tdesign-icons-vue-next';
-import { Message } from 'tdesign-vue-next';
+import { Message } from '../index';
 
 const text = '这是一条Message信息';
 

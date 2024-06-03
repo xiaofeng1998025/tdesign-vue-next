@@ -4,7 +4,7 @@
  * If you need to modify this file, contact PMC first please.
  */
 import { mount } from '@vue/test-utils';
-import { Divider } from 'tdesign-vue-next';
+import { Divider } from '../index';
 
 describe('divider Component', () => {
   ['left', 'right', 'center'].forEach((item) => {

@@ -5,7 +5,7 @@
  * If you need to modify this file, contact PMC first please.
  */
 import { mount } from '@vue/test-utils';
-import { Timeline, TimelineItem } from 'tdesign-vue-next';
+import { Timeline, TimelineItem } from '../index';
 import { getTimelineDefaultMount, getTimelineItemMount } from './mount';
 
 describe('timeline Component', () => {

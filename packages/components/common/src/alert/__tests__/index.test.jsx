@@ -8,7 +8,7 @@ import {
   InfoCircleFilledIcon,
 } from 'tdesign-icons-vue-next';
 import { nextTick } from '@td/adapter-vue';
-import { Alert } from 'tdesign-vue-next';
+import { Alert } from '../index';
 
 describe('alert', () => {
   describe(':props', () => {

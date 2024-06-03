@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { vi } from 'vitest';
-import { Watermark } from 'tdesign-vue-next';
+import { Watermark } from '../index';
 
 // every component needs four parts: props/events/slots/functions.
 describe('watermark', () => {

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 import { nextTick, ref } from '@td/adapter-vue';
-import { InputNumber } from 'tdesign-vue-next';
+import { InputNumber } from '../index';
 
 describe('inputNumber', () => {
   describe(':props', () => {

@@ -3,7 +3,7 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from '@td/adapter-vue';
 import { describe, expect, it } from 'vitest';
-import { Slider } from 'tdesign-vue-next';
+import { Slider } from '../index';
 import { formatLabel } from '@td/components-common/src/slider/util/common.ts';
 
 // ui test

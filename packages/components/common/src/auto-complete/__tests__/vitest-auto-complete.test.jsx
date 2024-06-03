@@ -6,7 +6,7 @@
  */
 import { mount } from '@vue/test-utils';
 import { vi } from 'vitest';
-import { AutoComplete } from 'tdesign-vue-next';
+import { AutoComplete } from '../index';
 import { simulateKeydownEvent } from 'tdesign-vue-next/test/utils';
 import { getNormalAutoCompleteMount, getOptionSlotAutoCompleteMount } from './mount';
 

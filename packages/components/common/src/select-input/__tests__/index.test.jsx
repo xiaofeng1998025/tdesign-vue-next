@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { CloseCircleFilledIcon } from 'tdesign-icons-vue-next';
 import { expect, it, vi } from 'vitest';
-import { SelectInput } from 'tdesign-vue-next';
+import { SelectInput } from '../index';
 
 describe('selectInput', () => {
   describe(':props', () => {

@@ -5,7 +5,7 @@
  */
 import { mount } from '@vue/test-utils';
 import { vi } from 'vitest';
-import { Link } from 'tdesign-vue-next';
+import { Link } from '../index';
 
 describe('link Component', () => {
   it('props.content works fine', () => {

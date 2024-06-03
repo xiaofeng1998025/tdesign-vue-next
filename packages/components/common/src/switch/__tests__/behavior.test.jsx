@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import { Switch } from 'tdesign-vue-next';
+import { Switch } from '../index';
 
 describe('switch', () => {
   describe('behavior test', () => {

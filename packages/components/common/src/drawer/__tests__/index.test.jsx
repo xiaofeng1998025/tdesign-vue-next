@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 import { nextTick, ref } from '@td/adapter-vue';
 import { CloseIcon } from 'tdesign-icons-vue-next';
-import { Drawer } from 'tdesign-vue-next';
+import { Drawer } from '../index';
 
 const text = '这是一段内容';
 

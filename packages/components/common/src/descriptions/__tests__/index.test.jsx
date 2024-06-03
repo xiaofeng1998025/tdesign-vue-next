@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { mount } from '@vue/test-utils';
-import Descriptions, { DescriptionsItem } from 'tdesign-vue-next';
+import Descriptions, { DescriptionsItem } from '../index';
 import { getDescriptionsMount } from './mount';
 import CustomComp from './custom-comp.vue';
 

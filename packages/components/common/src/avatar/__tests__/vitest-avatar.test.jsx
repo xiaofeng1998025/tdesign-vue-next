@@ -6,7 +6,7 @@
  */
 import { mount } from '@vue/test-utils';
 import { vi } from 'vitest';
-import { Avatar, AvatarGroup } from 'tdesign-vue-next';
+import { Avatar, AvatarGroup } from '../index';
 import { mockDelay, simulateImageEvent } from 'tdesign-vue-next/test/utils';
 import { getAvatarGroupDefaultMount } from './mount';
 

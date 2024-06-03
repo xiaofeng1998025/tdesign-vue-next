@@ -6,7 +6,7 @@
  */
 import { mount } from '@vue/test-utils';
 import { vi } from 'vitest';
-import { TagInput } from 'tdesign-vue-next';
+import { TagInput } from '../index';
 import { simulateInputChange, simulateInputEnter } from 'tdesign-vue-next/test/utils';
 import { getTagInputDefaultMount, getTagInputValueMount } from './mount';
 

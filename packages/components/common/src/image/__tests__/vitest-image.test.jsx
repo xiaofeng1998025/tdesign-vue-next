@@ -6,7 +6,7 @@
  */
 import { mount } from '@vue/test-utils';
 import { vi } from 'vitest';
-import { Image } from 'tdesign-vue-next';
+import { Image } from '../index';
 import { simulateImageEvent } from 'tdesign-vue-next/test/utils';
 import { getOverlayImageMount } from './mount';
 

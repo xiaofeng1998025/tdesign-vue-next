@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from '@td/adapter-vue';
 import { vi } from 'vitest';
-import { TabPanel, Tabs } from 'tdesign-vue-next';
+import { TabPanel, Tabs } from '../index';
 
 // every component needs four parts: props/events/slots/functions.
 describe('tabs', () => {

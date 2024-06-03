@@ -24,7 +24,7 @@ const testConfig = {
   include:
   // process.env.NODE_ENV === 'test-snap'
   //   ? ['test/unit/snap/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}']
-       [`${getRootPath('packages/tdesign-vue-next/src')}/**/__tests__/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}`],
+       [`${getRootPath('packages/components/common/src')}/**/__tests__/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}`],
   globals: true,
   environment: 'jsdom',
   testTimeout: 1000,

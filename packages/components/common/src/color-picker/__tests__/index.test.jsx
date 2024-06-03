@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 import { nextTick, ref } from '@td/adapter-vue';
-import { ColorPicker, ColorPickerPanel } from 'tdesign-vue-next';
+import { ColorPicker, ColorPickerPanel } from '../index';
 
 // every component needs four parts: props/events/slots/functions.
 describe('colorPickerPanel', () => {

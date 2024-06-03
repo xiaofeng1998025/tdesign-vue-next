@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { vi } from 'vitest';
-import { Switch } from 'tdesign-vue-next';
+import { Switch } from '../index';
 
 describe('switch', () => {
   describe(':props', () => {

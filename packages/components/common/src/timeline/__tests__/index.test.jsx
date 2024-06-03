@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Loading, { Timeline, TimelineItem } from 'tdesign-vue-next';
+import Loading, { Timeline, TimelineItem } from '../index';
 
 describe('timeLine', () => {
   describe(':base', () => {

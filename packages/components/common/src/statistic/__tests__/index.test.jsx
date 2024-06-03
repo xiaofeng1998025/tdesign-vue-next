@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { Statistic } from 'tdesign-vue-next';
+import { Statistic } from '../index';
 
 describe('statistic', () => {
   describe(':props', () => {

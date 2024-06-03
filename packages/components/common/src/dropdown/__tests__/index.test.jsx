@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from '@td/adapter-vue';
 import { expect } from 'vitest';
-import { Dropdown } from 'tdesign-vue-next';
+import { Dropdown } from '../index';
 
 // every component needs four parts: props/events/slots/functions.
 describe('dropdown', () => {

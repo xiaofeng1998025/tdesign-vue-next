@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { Rate } from 'tdesign-vue-next';
+import { Rate } from '../index';
 import { expect } from 'vitest';
 import { LogoGithubIcon } from 'tdesign-icons-vue-next';
 

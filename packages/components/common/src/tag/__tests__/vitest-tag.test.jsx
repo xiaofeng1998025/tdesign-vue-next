@@ -6,7 +6,7 @@
  */
 import { mount } from '@vue/test-utils';
 import { vi } from 'vitest';
-import { CheckTag, Tag } from 'tdesign-vue-next';
+import { CheckTag, Tag } from '../index';
 
 describe('tag Component', () => {
   it('props.closable: Tag contains element `.t-tag__icon-close`', () => {

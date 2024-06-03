@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { it, expect } from 'vitest';
-import { Layout, Header, Content, Footer, Aside } from 'tdesign-vue-next'
+import { Layout, Header, Content, Footer, Aside } from '../index';
 
 describe('Layout', () => {
   describe(':props', () => {

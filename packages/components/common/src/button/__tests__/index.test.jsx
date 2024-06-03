@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { vi } from 'vitest';
-import Button from 'tdesign-vue-next'
+import Button from '../index';
 
 describe('Button', () => {
   describe(':props', () => {

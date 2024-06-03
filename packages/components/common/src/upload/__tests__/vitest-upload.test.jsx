@@ -6,7 +6,7 @@
  */
 import { mount } from '@vue/test-utils';
 import { vi } from 'vitest';
-import { Upload } from 'tdesign-vue-next';
+import { Upload } from '../index';
 import { getFakeFileList, mockDelay, simulateDragFileChange, simulateFileChange } from 'tdesign-vue-next/test/utils';
 import { getUploadServer } from './request';
 

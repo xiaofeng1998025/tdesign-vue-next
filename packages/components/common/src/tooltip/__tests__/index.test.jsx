@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { expect, it } from 'vitest';
 import { nextTick, ref } from '@td/adapter-vue';
-import Tooltip from 'tdesign-vue-next';
+import Tooltip from '../index';
 
 const text = '这是一段内容';
 const tootipClass = '.t-popup';

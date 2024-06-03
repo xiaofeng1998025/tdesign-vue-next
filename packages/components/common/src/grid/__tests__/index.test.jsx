@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import { Col, Row } from 'tdesign-vue-next';
+import { Col, Row } from '../index';
 
 const alignList = ['start', 'end', 'center', 'stretch', 'baseline', 'top', 'middle', 'bottom'];
 const justifyList = ['start', 'end', 'center', 'space-around', 'space-between'];

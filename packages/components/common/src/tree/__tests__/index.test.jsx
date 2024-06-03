@@ -1,10 +1,9 @@
-/* eslint-disable vue/one-component-per-file */
 import { mount } from '@vue/test-utils';
-import Tree from 'tdesign-vue-next'
+import Tree from '../index';
 import { defineComponent } from './adapt';
 import { delay } from './kit';
 
-describe('Tree:init', () => {
+describe('tree:init', () => {
   vi.useRealTimers();
   describe(':props.data', () => {
     it('传递空数据时，展示兜底界面', async () => {

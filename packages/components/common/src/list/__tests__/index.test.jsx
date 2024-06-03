@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
-import { List, ListItem, ListItemMeta } from 'tdesign-vue-next';
+import { List, ListItem, ListItemMeta } from '../index';
 
 describe('list', () => {
   describe(':props', () => {
