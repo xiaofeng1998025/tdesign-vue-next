@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 
 // empty value
 export function getTagInputDefaultMount(TagInput, props = {}, events) {

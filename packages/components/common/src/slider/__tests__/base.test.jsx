@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { nextTick } from '@td/adapter-vue';
 import { describe, expect, it } from 'vitest';
 import { Slider } from '../index';

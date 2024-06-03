@@ -1,5 +1,5 @@
 import { nextTick, ref } from '@td/adapter-vue';
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { expect, vi } from 'vitest';
 import { CheckCircleFilledIcon, CloseCircleFilledIcon, InfoCircleIcon } from 'tdesign-icons-vue-next';
 import { isObject, omit } from 'lodash-es';

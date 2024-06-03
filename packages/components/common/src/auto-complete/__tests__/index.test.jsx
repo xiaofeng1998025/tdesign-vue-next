@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { AutoComplete } from '../index';
 
 const options = ['第一个默认联想词', '第二个默认联想词', '第三个默认联想词'];

@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import Loading, { Timeline, TimelineItem } from '../index';
 
 describe('timeLine', () => {

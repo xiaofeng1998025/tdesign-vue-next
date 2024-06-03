@@ -1,5 +1,5 @@
 import { nextTick, ref } from '@td/adapter-vue';
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { vi } from 'vitest';
 import Swiper, { SwiperItem } from '../index';
 

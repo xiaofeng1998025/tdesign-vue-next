@@ -1,5 +1,5 @@
 import { ref } from '@td/adapter-vue';
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { describe, expect, it, vi } from 'vitest';
 import { Option, OptionGroup, Select } from '../index';
 import { CloseCircleFilledIcon } from 'tdesign-icons-vue-next';

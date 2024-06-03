@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import Descriptions, { DescriptionsItem } from '../index';
 import { getDescriptionsMount } from './mount';
 import CustomComp from './custom-comp.vue';

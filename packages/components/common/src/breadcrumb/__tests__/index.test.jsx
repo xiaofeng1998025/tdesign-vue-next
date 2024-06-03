@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { nextTick } from '@td/adapter-vue';
 import { expect, vi } from 'vitest';
 import { Breadcrumb, BreadcrumbItem } from '../index';

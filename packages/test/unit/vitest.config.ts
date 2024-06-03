@@ -12,7 +12,7 @@ export function resolveAlias(vueVersion: number) {
     { find: '@', replacement: path.resolve(__dirname) },
     { find: '@adapter/vue', replacement: getRootPath(`packages/adapter/vue/vue${vueVersion}`) },
     { find: '@adapter/hooks', replacement: getRootPath(`packages/adapter/hooks/vue${vueVersion}`) },
-    { find: '@adapter/utils', replacement: getRootPath(`packages/adapter/utils/vue${vueVersion}`) },
+    { find: '@adapter/test-utils', replacement: getRootPath(`internal/vue-test-utils/vue${vueVersion}`) },
     { find: /^@td\/components\/(.+)/, replacement: getRootPath(`packages/tdesign-vue${vueVersion === 3 ? '-next' : ''}/src/$1`) },
     { find: /^@td\/components$/, replacement: getRootPath(`packages/tdesign-vue${vueVersion === 3 ? '-next' : ''}`) },
     { find: 'tdesign-vue-next/es/locale', replacement: getRootPath(`packages/components/locale/src`) },

@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import Descriptions, { DescriptionsItem } from 'tdesign-vue-next';
 
 export function getDescriptionsMount(props = {}, slots = {}) {

@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { ref } from '@td/adapter-vue';
 import { Submenu } from '../index';
 

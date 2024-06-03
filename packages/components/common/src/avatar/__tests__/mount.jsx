@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { Avatar } from 'tdesign-vue-next';
 
 // Avatar 数量变化会影响测试用例结果

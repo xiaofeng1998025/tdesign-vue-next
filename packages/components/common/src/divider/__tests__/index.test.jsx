@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { Divider } from '../index';
 
 // every component needs four parts: props/events/slots/functions.

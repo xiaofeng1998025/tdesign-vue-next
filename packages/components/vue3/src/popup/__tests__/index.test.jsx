@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { usePrefixClass } from '@td/adapter-hooks';
 import { Popup } from '../index';

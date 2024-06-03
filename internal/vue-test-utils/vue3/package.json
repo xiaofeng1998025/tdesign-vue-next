@@ -1,5 +1,5 @@
 {
-  "name": "@td/vue-test-utils",
+  "name": "@td/vue-test-utils-vue3",
   "type": "module",
   "version": "0.0.1",
   "description": "",
@@ -9,6 +9,10 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@vue/test-utils": "^2.4.6",
+    "vue": "3.3.9"
   },
   "devDependencies": {
     "@td/ts-config": "workspace:^"

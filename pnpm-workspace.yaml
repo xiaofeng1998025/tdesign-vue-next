@@ -2,4 +2,4 @@ packages:
   - 'sites/*'
   - 'packages/**'
   - 'configs/*'
-  - 'internal/*'
+  - 'internal/**'

@@ -79,7 +79,7 @@
       "vue3": "npm:vue@3.3.9"
     },
     "packageExtensions": {
-      "@vue/test-utils": {
+      "@vue/test-utils@2": {
         "peerDependencies": {
           "vue": "3.3.9"
         }

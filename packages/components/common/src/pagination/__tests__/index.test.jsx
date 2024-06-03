@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { vi } from 'vitest';
 import { Pagination } from '../index';
 import { Select } from '../index';

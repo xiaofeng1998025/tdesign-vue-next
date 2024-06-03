@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { Rate } from '../index';
 import { expect } from 'vitest';
 import { LogoGithubIcon } from 'tdesign-icons-vue-next';

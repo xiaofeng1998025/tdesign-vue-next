@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { describe, expect, it } from 'vitest';
 import { Button, Divider, Space } from 'tdesign-vue-next';
 

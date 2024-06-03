@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { Button } from '../../button';
 
 export function getSpaceDefaultMount(Space, props = {}, events = {}) {

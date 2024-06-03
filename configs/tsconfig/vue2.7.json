@@ -14,11 +14,8 @@
       "@adapter/hooks/*": [
         "packages/adapter/hooks/vue2.7/*"
       ],
-      "@adapter/utils": [
-        "packages/adapter/utils/vue2.7"
-      ],
-      "@adapter/utils/*": [
-        "packages/adapter/utils/vue2.7/*"
+      "@adapter/test-utils": [
+        "internal/vue-test-utils/vue2.7"
       ],
       "@td/components": [
         "packages/tdesign-vue"

@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { describe, expect, it, vi } from 'vitest';
 import { nextTick, ref } from '@td/adapter-vue';
 import { AppIcon } from 'tdesign-icons-vue-next';

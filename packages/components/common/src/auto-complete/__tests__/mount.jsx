@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 
 export function getNormalAutoCompleteMount(AutoComplete, props, events) {
   // 5 different options

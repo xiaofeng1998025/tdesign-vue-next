@@ -1,5 +1,5 @@
 import { nextTick, ref } from '@td/adapter-vue';
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { expect, it, vi } from 'vitest';
 import { Textarea } from '../index';
 

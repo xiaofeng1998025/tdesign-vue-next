@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { CloseCircleFilledIcon } from 'tdesign-icons-vue-next';
 import { expect, it, vi } from 'vitest';
 import { SelectInput } from '../index';

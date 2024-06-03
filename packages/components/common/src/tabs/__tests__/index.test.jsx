@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { nextTick } from '@td/adapter-vue';
 import { vi } from 'vitest';
 import { TabPanel, Tabs } from '../index';

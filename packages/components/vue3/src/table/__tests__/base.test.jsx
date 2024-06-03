@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { BaseTable, EnhancedTable, PrimaryTable, Table } from '../index';
 
 const data = Array.from({ length: 5 }).fill(null).map((item, index) => ({

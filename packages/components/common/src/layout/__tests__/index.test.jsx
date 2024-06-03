@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { mount } from '@td/vue-test-utils';
 import { it, expect } from 'vitest';
 import { Layout, Header, Content, Footer, Aside } from '../index';
 
