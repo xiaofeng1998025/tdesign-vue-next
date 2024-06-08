@@ -1,3 +1,4 @@
+import path from 'node:path';
 import url from '@rollup/plugin-url';
 import json from '@rollup/plugin-json';
 import babel from '@rollup/plugin-babel';
@@ -11,13 +12,14 @@ import analyzer from 'rollup-plugin-analyzer';
 import { terser } from 'rollup-plugin-terser';
 import commonjs from '@rollup/plugin-commonjs';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
+import alias from 'rollup-plugin-alias';
 import multiInput from 'rollup-plugin-multi-input';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import staticImport from 'rollup-plugin-static-import';
 import ignoreImport from 'rollup-plugin-ignore-import';
 import copy from 'rollup-plugin-copy';
 
-import pkg from '../package.json';
+import pkg from './package.json';
 
 const name = 'tdesign';
 
@@ -31,17 +33,36 @@ const banner = `/**
  */
 `;
 
+// const srcDir = path.join(path.resolve(__dirname), '../../../packages/components/common/src');
+// const vue3SrcDir = '../../../packages/components/vue3/src';
+
 const input = 'src/index-lib.ts';
 const inputList = ['src/**/*.ts', 'src/**/*.tsx', '!src/**/demos', '!src/**/*.d.ts', '!src/**/__tests__'];
 
-const getPlugins = ({
+// const input = './index-lib.ts';
+// const inputList = [`${srcDir}/**/*.ts`, `${srcDir}/**/*.tsx`];
+
+function getPlugins({
   env,
   isProd = false,
   ignoreLess = true,
   extractOneCss = false,
   extractMultiCss = false,
-} = {}) => {
+} = {}) {
   const plugins = [
+    alias({
+      resolve: ['.tsx', '.ts'],
+      entries: {
+        '@td/adapter-vue': path.join(path.resolve(__dirname), '../../packages/adapter/vue/vue3'),
+        '@td/adapter-hooks': path.join(path.resolve(__dirname), '../../packages/adapter/hooks'),
+        '@td/adapter-utils': path.join(path.resolve(__dirname), '../../packages/adapter/utils'),
+        '@td/intel': path.join(path.resolve(__dirname), '../../packages/intel/vue3/src'),
+        '@td/shared': path.join(path.resolve(__dirname), '../../packages/shared'),
+        // '@td/common': path.join(path.resolve(__dirname), '../../packages/common'),
+        '@td/components-common': path.join(path.resolve(__dirname), '../../packages/components/common'),
+        '@td/components-vue3': path.join(path.resolve(__dirname), '../../packages/components/vue3'),
+      },
+    }),
     nodeResolve(),
     vuePlugin(),
     commonjs(),
@@ -124,20 +145,18 @@ const getPlugins = ({
     plugins.push(
       terser({
         output: {
-          /* eslint-disable */
           ascii_only: true,
-          /* eslint-enable */
         },
       }),
     );
   }
 
   return plugins;
-};
+}
 
 /** @type {import('rollup').RollupOptions} */
 const cssConfig = {
-  input: ['src/**/style/index.js'],
+  input: [`src/**/style/index.js`],
   plugins: [multiInput(), styles({ mode: 'extract' })],
   output: {
     banner,
@@ -153,7 +172,9 @@ const deleteEmptyJSConfig = {
 
 // lodash会使ssr无法运行,@babel\runtime affix组件报错,tinycolor2 颜色组件报错,dayjs 日期组件报错
 const exception = ['tinycolor2', 'dayjs'];
-const esExternal = esExternalDeps.concat(externalPeerDeps).filter((value) => !exception.includes(value));
+const esExternal = esExternalDeps
+  .concat(externalPeerDeps)
+  .filter(value => !exception.includes(value));
 const esConfig = {
   input: inputList.concat('!src/index-lib.ts'),
   // 为了保留 style/css.js
@@ -165,6 +186,11 @@ const esConfig = {
     dir: 'es/',
     format: 'esm',
     sourcemap: true,
+    // entryFileNames: (assetInfo) => {
+    //   // assetInfo.facadeModuleId contains the file's full path
+    //   const name = assetInfo.facadeModuleId.replace(`${srcDir}/`, '').replace(/\.ts|tsx/, '');
+    //   return `${name}.mjs`;
+    // },
     entryFileNames: '[name].mjs',
     chunkFileNames: '_chunks/dep-[hash].mjs',
   },
@@ -269,13 +295,13 @@ const resetCss = {
 };
 
 export default [
-  cssConfig,
+  // cssConfig,
   esConfig,
-  esmConfig,
-  libConfig,
-  cjsConfig,
-  umdConfig,
-  umdMinConfig,
-  resetCss,
-  deleteEmptyJSConfig,
+  // esmConfig,
+  // libConfig,
+  // cjsConfig,
+  // umdConfig,
+  // umdMinConfig,
+  // resetCss,
+  // deleteEmptyJSConfig,
 ];
