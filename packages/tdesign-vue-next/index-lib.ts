@@ -1,4 +1,4 @@
-import './style';
+import '@td/components-common/src/style/index';
 import tdesign from './index';
 
 const ENV = process.env.NODE_ENV;

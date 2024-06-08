@@ -33,14 +33,30 @@ const banner = `/**
  */
 `;
 
-// const srcDir = path.join(path.resolve(__dirname), '../../../packages/components/common/src');
-// const vue3SrcDir = '../../../packages/components/vue3/src';
-
-const input = 'src/index-lib.ts';
+const input = './index-lib.ts';
 const inputList = ['src/**/*.ts', 'src/**/*.tsx', '!src/**/demos', '!src/**/*.d.ts', '!src/**/__tests__'];
 
-// const input = './index-lib.ts';
-// const inputList = [`${srcDir}/**/*.ts`, `${srcDir}/**/*.tsx`];
+// CSS 样式入口
+const cssDirMap = {
+  commonDir: path.join(path.resolve(__dirname), '../../packages/common'),
+  commonComponentDir: path.join(path.resolve(__dirname), '../../packages/components/common/src'),
+  vue3ComponentDir: path.join(path.resolve(__dirname), '../../packages/components/vue3/src'),
+};
+
+const aliasPlugin = alias({
+  resolve: ['.tsx', '.ts', '.js', '.less'],
+  entries: {
+    '@adapter/vue': path.join(path.resolve(__dirname), '../../packages/adapter/vue/vue3'),
+    '@adapter/hooks': path.join(path.resolve(__dirname), '../../packages/adapter/hooks/vue3'),
+    '@td/adapter-vue': path.join(path.resolve(__dirname), '../../packages/adapter/vue'),
+    '@td/adapter-hooks': path.join(path.resolve(__dirname), '../../packages/adapter/hooks'),
+    '@td/utils': path.join(path.resolve(__dirname), '../../packages/utils'),
+    '@td/common': path.join(path.resolve(__dirname), '../../packages/common'),
+    '@td/components': path.join(path.resolve(__dirname), '../../packages/tdesign-vue-next/src'),
+    '@td/components-common': path.join(path.resolve(__dirname), '../../packages/components/common'),
+    '@td/components-vue3': path.join(path.resolve(__dirname), '../../packages/components/vue3'),
+  },
+});
 
 function getPlugins({
   env,
@@ -50,19 +66,6 @@ function getPlugins({
   extractMultiCss = false,
 } = {}) {
   const plugins = [
-    alias({
-      resolve: ['.tsx', '.ts'],
-      entries: {
-        '@td/adapter-vue': path.join(path.resolve(__dirname), '../../packages/adapter/vue/vue3'),
-        '@td/adapter-hooks': path.join(path.resolve(__dirname), '../../packages/adapter/hooks'),
-        '@td/adapter-utils': path.join(path.resolve(__dirname), '../../packages/adapter/utils'),
-        '@td/intel': path.join(path.resolve(__dirname), '../../packages/intel/vue3/src'),
-        '@td/shared': path.join(path.resolve(__dirname), '../../packages/shared'),
-        // '@td/common': path.join(path.resolve(__dirname), '../../packages/common'),
-        '@td/components-common': path.join(path.resolve(__dirname), '../../packages/components/common'),
-        '@td/components-vue3': path.join(path.resolve(__dirname), '../../packages/components/vue3'),
-      },
-    }),
     nodeResolve(),
     vuePlugin(),
     commonjs(),
@@ -86,7 +89,7 @@ function getPlugins({
     }),
   ];
 
-  // css
+  // dist 目录
   if (extractOneCss) {
     plugins.push(
       postcss({
@@ -102,7 +105,7 @@ function getPlugins({
         include: ['src/**/style/css.mjs'],
       }),
       ignoreImport({
-        include: ['src/*/style/*'],
+        include: [`src/*/style/*`],
         body: 'import "./style/css.mjs";',
       }),
       copy({
@@ -156,18 +159,22 @@ function getPlugins({
 
 /** @type {import('rollup').RollupOptions} */
 const cssConfig = {
-  input: [`src/**/style/index.js`],
-  plugins: [multiInput(), styles({ mode: 'extract' })],
+  input: [`${cssDirMap.commonComponentDir}/**/style/index.js`],
+  plugins: [aliasPlugin, multiInput(), styles({ mode: 'extract' })],
   output: {
     banner,
-    dir: 'es/',
-    assetFileNames: '[name].css',
+    dir: 'es',
+    assetFileNames: (assetInfo) => {
+      const filePathRegExp = new RegExp(`${cssDirMap.commonComponentDir}/(.*).js`);
+      const name = assetInfo.facadeModuleId.match(filePathRegExp)[1];
+      return `${name}.css`;
+    },
+    entryFileNames: (assetInfo) => {
+      const filePathRegExp = new RegExp(`${cssDirMap.commonComponentDir}/(.*).js`);
+      const name = assetInfo.facadeModuleId.match(filePathRegExp)[1];
+      return `${name}.js`;
+    },
   },
-};
-
-const deleteEmptyJSConfig = {
-  input: 'script/utils/rollup-empty-input.js',
-  plugins: [deletePlugin({ targets: 'es/**/style/index.js', runOnce: true })],
 };
 
 // lodash会使ssr无法运行,@babel\runtime affix组件报错,tinycolor2 颜色组件报错,dayjs 日期组件报错
@@ -175,22 +182,18 @@ const exception = ['tinycolor2', 'dayjs'];
 const esExternal = esExternalDeps
   .concat(externalPeerDeps)
   .filter(value => !exception.includes(value));
+
 const esConfig = {
   input: inputList.concat('!src/index-lib.ts'),
   // 为了保留 style/css.js
   treeshake: false,
   external: esExternal,
-  plugins: [multiInput()].concat(getPlugins({ extractMultiCss: true })),
+  plugins: [aliasPlugin, multiInput()].concat(getPlugins({ extractMultiCss: true })),
   output: {
     banner,
     dir: 'es/',
     format: 'esm',
     sourcemap: true,
-    // entryFileNames: (assetInfo) => {
-    //   // assetInfo.facadeModuleId contains the file's full path
-    //   const name = assetInfo.facadeModuleId.replace(`${srcDir}/`, '').replace(/\.ts|tsx/, '');
-    //   return `${name}.mjs`;
-    // },
     entryFileNames: '[name].mjs',
     chunkFileNames: '_chunks/dep-[hash].mjs',
   },
@@ -202,7 +205,7 @@ const esmConfig = {
   // 为了保留 style/index.js
   treeshake: false,
   external: externalDeps.concat(externalPeerDeps),
-  plugins: [multiInput()].concat(getPlugins({ ignoreLess: false })),
+  plugins: [aliasPlugin, multiInput()].concat(getPlugins({ ignoreLess: false })),
   output: {
     banner,
     dir: 'esm/',
@@ -216,7 +219,7 @@ const esmConfig = {
 const libConfig = {
   input: inputList,
   external: externalDeps.concat(externalPeerDeps),
-  plugins: [multiInput()].concat(getPlugins()),
+  plugins: [aliasPlugin, multiInput()].concat(getPlugins()),
   output: {
     banner,
     dir: 'lib/',
@@ -230,7 +233,7 @@ const libConfig = {
 const cjsConfig = {
   input: inputList,
   external: externalDeps.concat(externalPeerDeps),
-  plugins: [multiInput()].concat(getPlugins()),
+  plugins: [aliasPlugin, multiInput()].concat(getPlugins()),
   output: {
     banner,
     dir: 'cjs/',
@@ -245,7 +248,7 @@ const cjsConfig = {
 const umdConfig = {
   input,
   external: externalPeerDeps,
-  plugins: getPlugins({
+  plugins: [aliasPlugin].concat(getPlugins({
     env: 'development',
     extractOneCss: true,
   }).concat(
@@ -253,7 +256,7 @@ const umdConfig = {
       limit: 5,
       summaryOnly: true,
     }),
-  ),
+  )),
   output: {
     name: 'TDesign',
     banner,
@@ -269,11 +272,11 @@ const umdConfig = {
 const umdMinConfig = {
   input,
   external: externalPeerDeps,
-  plugins: getPlugins({
+  plugins: [aliasPlugin].concat(getPlugins({
     isProd: true,
     extractOneCss: true,
     env: 'production',
-  }),
+  })),
   output: {
     name: 'TDesign',
     banner,
@@ -287,21 +290,27 @@ const umdMinConfig = {
 
 // 单独导出 reset.css 到 dist 目录，兼容旧版本样式
 const resetCss = {
-  input: 'src/_common/style/web/_reset.less',
+  input: `${cssDirMap.commonDir}/style/web/_reset.less`,
   output: {
     file: 'dist/reset.css',
   },
   plugins: [postcss({ extract: true })],
 };
 
+// 用于清空无效的 style 目录文件，减少冗余
+const deleteEmptyJSConfig = {
+  input: './rollup-empty-input.js',
+  plugins: [deletePlugin({ targets: 'es/**/style/index.js', runOnce: true })],
+};
+
 export default [
-  // cssConfig,
-  esConfig,
+  cssConfig,
+  // esConfig,
   // esmConfig,
   // libConfig,
   // cjsConfig,
-  // umdConfig,
-  // umdMinConfig,
-  // resetCss,
-  // deleteEmptyJSConfig,
+  umdConfig,
+  umdMinConfig,
+  resetCss,
+  deleteEmptyJSConfig,
 ];

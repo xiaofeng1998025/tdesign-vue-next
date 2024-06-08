@@ -5,6 +5,7 @@
   "description": "TDesign Component for vue-next",
   "main": "index.ts",
   "scripts": {
+    "prebuild": "rimraf es/* esm/* lib/* cjs/* dist/* --glob",
     "test:unit": "vitest run --config ./test/unit/vitest.config.ts",
     "build": "cross-env NODE_ENV=production rollup -c ./rollup.config.js",
     "build:tsc": "run-p build:tsc-*",
@@ -14,10 +15,12 @@
     "build:tsc-cjs": "tsc --emitDeclarationOnly -d --outDir cjs/"
   },
   "dependencies": {
+    "@babel/runtime": "^7.22.6",
     "@td/adapter-vue": "workspace:^",
     "@td/common": "workspace:tdesign-common@^",
     "@td/components-common": "workspace:^",
     "@td/components-vue3": "workspace:^",
+    "dayjs": "1.11.10",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
