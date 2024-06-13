@@ -14,10 +14,12 @@ import commonjs from '@rollup/plugin-commonjs';
 import { DEFAULT_EXTENSIONS } from '@babel/core';
 import alias from 'rollup-plugin-alias';
 import multiInput from 'rollup-plugin-multi-input';
+
 import nodeResolve from '@rollup/plugin-node-resolve';
 import staticImport from 'rollup-plugin-static-import';
 import ignoreImport from 'rollup-plugin-ignore-import';
 import copy from 'rollup-plugin-copy';
+import { globSync } from 'glob';
 
 import pkg from './package.json';
 
@@ -155,6 +157,21 @@ function getPlugins({
   }
 
   return plugins;
+}
+
+function getCssConfig() {
+  const files = globSync(`${cssDirMap.commonComponentDir}/**/style/index.js`);
+  return files.map((file) => {
+    return {
+      input: file,
+      plugins: [aliasPlugin, styles({ mode: 'extract' })],
+      output: {
+        banner,
+        dir: `es/${file.slice(cssDirMap.commonComponentDir.length, -8)}`,
+        assetFileNames: '[name].css',
+      },
+    };
+  });
 }
 
 /** @type {import('rollup').RollupOptions} */
@@ -304,13 +321,14 @@ const deleteEmptyJSConfig = {
 };
 
 export default [
-  cssConfig,
+  // cssConfig,
+  ...getCssConfig(),
   // esConfig,
   // esmConfig,
   // libConfig,
   // cjsConfig,
-  umdConfig,
-  umdMinConfig,
-  resetCss,
-  deleteEmptyJSConfig,
+  // umdConfig,
+  // umdMinConfig,
+  // resetCss,
+  // deleteEmptyJSConfig,
 ];
